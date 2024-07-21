@@ -1,0 +1,70 @@
+/***********
+Autor: Sebastian M
+Fecha: 20-7-2024
+Tema: TAD
+***********/
+
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+
+class Cafetera{
+  private:
+    string nombre;
+    
+  public:
+    Cafetera(string nombre);
+    void capuchino(){
+    cout << "Haciendo capuchino en la cafetera "<<nombre<<endl;
+    }
+    void tinto(){
+    cout<< "Haciendo tinto en la cafetera "<<nombre<<endl;
+    }
+};
+
+Cafetera::Cafetera(string _nombre){
+  nombre = nombre;
+}
+
+int main(){
+  string respuestaCafetera;
+  int  respuestaCafe;
+  
+  Cafetera cafetera1 ("Oster");
+  Cafetera cafetera2 ("Haceb");
+  
+  cout<<"----- Bienvenido a la cafeteria Benito Malo -----"<<endl;
+  cout<<" Que cafetera desea utilizar? "<<endl;
+  cin>>respuestaCafetera; 
+  
+  if(respuestaCafetera == "Oster" | respuestaCafetera =="oster"){
+      cout<<"Tipo de cafe: "<<endl;
+      cout<<"1. Tinto"<<endl;
+      cout<<"2. Capuchino"<<endl;
+      cin>>respuestaCafe;
+      
+      if(respuestaCafe == 1){
+      cafetera1.tinto();
+      }else if (respuestaCafe == 2){
+      cafetera1.capuchino();
+      }
+  }else {
+      
+      cout<<"Tipo de cafe: "<<endl;
+      cout<<"1. Tinto"<<endl;
+      cout<<"2. Capuchino"<<endl;
+      cin>>respuestaCafe;
+      
+      if(respuestaCafe == 1){
+      cafetera2.tinto();
+      }else if (respuestaCafe == 2){
+      cafetera2.capuchino();
+      }
+      
+  
+  }
+}
+
