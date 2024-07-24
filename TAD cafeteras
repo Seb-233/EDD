@@ -1,70 +1,81 @@
 /***********
 Autor: Sebastian M
-Fecha: 20-7-2024
+Created: 20/7/2024  -  Modified: 24/07/2024
 Tema: TAD
 ***********/
 
 
 #include <iostream>
-#include <string.h>
+#include <string>
 using namespace std;
 
-
-
-class Cafetera{
-  private:
+class Cafetera {
+private:
     string nombre;
-    
-  public:
-    Cafetera(string nombre);
-    void capuchino(){
-    cout << "Haciendo capuchino en la cafetera "<<nombre<<endl;
+
+public:
+    Cafetera(string nombre) : nombre(nombre) {}
+    void capuchino() {
+        cout << "Haciendo capuchino en la cafetera " << nombre << endl;
     }
-    void tinto(){
-    cout<< "Haciendo tinto en la cafetera "<<nombre<<endl;
+    void tinto() {
+        cout << "Haciendo tinto en la cafetera " << nombre << endl;
+    }
+    string getNombre() {
+        return nombre;
     }
 };
 
-Cafetera::Cafetera(string _nombre){
-  nombre = nombre;
-}
+int main() {
+    int respuestaCafe = 0;
+    Cafetera cafetera1("Oster");
+    Cafetera cafetera2("Haceb");
+    Cafetera* cafeteraActual = &cafetera1; // Iniciamos con la cafetera Oster
 
-int main(){
-  string respuestaCafetera;
-  int  respuestaCafe;
-  
-  Cafetera cafetera1 ("Oster");
-  Cafetera cafetera2 ("Haceb");
-  
-  cout<<"----- Bienvenido a la cafeteria Benito Malo -----"<<endl;
-  cout<<" Que cafetera desea utilizar? "<<endl;
-  cin>>respuestaCafetera; 
-  
-  if(respuestaCafetera == "Oster" | respuestaCafetera =="oster"){
-      cout<<"Tipo de cafe: "<<endl;
-      cout<<"1. Tinto"<<endl;
-      cout<<"2. Capuchino"<<endl;
-      cin>>respuestaCafe;
-      
-      if(respuestaCafe == 1){
-      cafetera1.tinto();
-      }else if (respuestaCafe == 2){
-      cafetera1.capuchino();
-      }
-  }else {
-      
-      cout<<"Tipo de cafe: "<<endl;
-      cout<<"1. Tinto"<<endl;
-      cout<<"2. Capuchino"<<endl;
-      cin>>respuestaCafe;
-      
-      if(respuestaCafe == 1){
-      cafetera2.tinto();
-      }else if (respuestaCafe == 2){
-      cafetera2.capuchino();
-      }
-      
-  
-  }
-}
+    cout << "----- Bienvenido a la cafeteria Benito Malo -----" << endl;
 
+    do {
+        cout<<endl;
+        cout << "Actualmente usando la cafetera: " << cafeteraActual->getNombre() << endl;
+        cout << "Tipo de cafe: " << endl;
+        cout << "1. Tinto" << endl;
+        cout << "2. Capuchino" << endl;
+        cout << "3. Utilizar otra cafetera" << endl;
+        cout << "4. Salir" << endl;
+        cin >> respuestaCafe;
+
+        switch (respuestaCafe) {
+            case 1: {
+                cafeteraActual->tinto();
+                break;
+            }
+            case 2: {
+                cafeteraActual->capuchino();
+                break;
+            }
+            case 3: {
+                string respuestaCafetera;
+                cout << "Que cafetera desea utilizar? (Oster/Haceb)" << endl;
+                cin >> respuestaCafetera;
+                if (respuestaCafetera == "Oster" || respuestaCafetera == "oster") {
+                    cafeteraActual = &cafetera1;
+                } else if (respuestaCafetera == "Haceb" || respuestaCafetera == "haceb") {
+                    cafeteraActual = &cafetera2;
+                } else {
+                    cout << "Cafetera no valida, utilizando la actual." << endl;
+                }
+                break;
+            }
+            case 4: {
+                cout << "Gracias por su visita" << endl;
+                break;
+            }
+            default: {
+                cout << "Opcion no valida" << endl;
+                break;
+            }
+        }
+    } while (respuestaCafe != 4);
+
+    return 0;
+}
