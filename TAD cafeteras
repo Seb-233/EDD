@@ -1,9 +1,8 @@
 /***********
 Autor: Sebastian M
-Created: 20/7/2024  -  Modified: 24/07/2024
+Fecha: 20-7-2024
 Tema: TAD
 ***********/
-
 
 #include <iostream>
 #include <string>
@@ -14,13 +13,20 @@ private:
     string nombre;
 
 public:
+    // Constructor que inicializa el nombre de la cafetera
     Cafetera(string nombre) : nombre(nombre) {}
+
+    // Método para hacer capuchino
     void capuchino() {
         cout << "Haciendo capuchino en la cafetera " << nombre << endl;
     }
+
+    // Método para hacer tinto
     void tinto() {
         cout << "Haciendo tinto en la cafetera " << nombre << endl;
     }
+
+    // Método para obtener el nombre de la cafetera
     string getNombre() {
         return nombre;
     }
@@ -28,14 +34,17 @@ public:
 
 int main() {
     int respuestaCafe = 0;
+    // Inicializamos dos objetos Cafetera
     Cafetera cafetera1("Oster");
     Cafetera cafetera2("Haceb");
-    Cafetera* cafeteraActual = &cafetera1; // Iniciamos con la cafetera Oster
+    // Puntero a la cafetera actual, iniciando con la cafetera Oster
+    Cafetera* cafeteraActual = &cafetera1; 
 
     cout << "----- Bienvenido a la cafeteria Benito Malo -----" << endl;
 
     do {
         cout<<endl;
+        // Mostrar la cafetera actual
         cout << "Actualmente usando la cafetera: " << cafeteraActual->getNombre() << endl;
         cout << "Tipo de cafe: " << endl;
         cout << "1. Tinto" << endl;
@@ -46,31 +55,38 @@ int main() {
 
         switch (respuestaCafe) {
             case 1: {
+                // Hacer tinto con la cafetera actual
                 cafeteraActual->tinto();
                 break;
             }
             case 2: {
+                // Hacer capuchino con la cafetera actual
                 cafeteraActual->capuchino();
                 break;
             }
             case 3: {
+                // Cambiar la cafetera actual
                 string respuestaCafetera;
                 cout << "Que cafetera desea utilizar? (Oster/Haceb)" << endl;
                 cin >> respuestaCafetera;
+                // Validar la entrada del usuario y cambiar la cafetera actual
                 if (respuestaCafetera == "Oster" || respuestaCafetera == "oster") {
                     cafeteraActual = &cafetera1;
                 } else if (respuestaCafetera == "Haceb" || respuestaCafetera == "haceb") {
                     cafeteraActual = &cafetera2;
                 } else {
+                    // Mensaje de error si la cafetera no es válida
                     cout << "Cafetera no valida, utilizando la actual." << endl;
                 }
                 break;
             }
             case 4: {
+                // Salir del programa
                 cout << "Gracias por su visita" << endl;
                 break;
             }
             default: {
+                // Manejar opción no válida
                 cout << "Opcion no valida" << endl;
                 break;
             }
